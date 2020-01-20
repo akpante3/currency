@@ -19,7 +19,7 @@ const Store = createStore(
     compose(
         middleware,
         devTools({
-            name: platform.OS,
+            name: Platform.OS,
             hostname: 'localhost',
             port: 5678
         }),

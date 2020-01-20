@@ -15,8 +15,10 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
+import { Provider } from 'react-redux';
+import Store from './src/Store'
 
-import { Header } from './src/components/index';
+import { Header, CrytoContainer } from './src/components/index';
 
 import {
   // Header,
@@ -29,9 +31,12 @@ import {
 
 const App: () => React$Node = () => {
   return (
-    <View>
-      <Header />
-    </View>
+    <Provider store={Store}>
+      <View>
+        <Header />
+        <CrytoContainer />
+      </View>
+    </Provider>
   );
 };
 
