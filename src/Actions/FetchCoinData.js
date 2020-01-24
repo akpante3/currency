@@ -1,13 +1,21 @@
 import axios from 'axios';
-import { apiBasrURL } from './../utils/Constants';
+import { apiBaseUrl } from './../Utils/Constants';
+import {
+    FETCHING_COIN_DATA,
+    FETCHING_COIN_DATA_SUCCESS,
+    FETCHING_COIN_DATA_FAIL
+} from './ActionTypes';
 
 export default function fetchCoinData() {
     return dispatch => {
         dispatch({ type: FETCHING_COIN_DATA })
 
-        return axios.get(`${apiBasrURL}/v1/ticker/?limit=10`).then(res => {
+        return axios.get(`${apiBaseUrl}/v1/ticker/?limit=10`).then(res => {
+           console.log(res, '===>><')
            dispatch({ type: FETCHING_COIN_DATA_SUCCESS, payload: res.data })
+
         }).catch(err => {
+
             dispatch({ type: FETCHING_COIN_DATA_FAIL, payload: err.data })
         })
     }
